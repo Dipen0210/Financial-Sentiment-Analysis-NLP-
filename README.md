@@ -106,19 +106,6 @@ Combine **news sentiment**, **MACD**, and **RSI** to generate actionable **BUY/S
 
 ---
 
-## 📂 Repository Structure
-
-```bash
-├── FinBERTFineTuning.ipynb        # Fine-tune FinBERT pipeline
-├── FinalCode.ipynb                # Signal generation & backtesting
-├── my-finbert-finetuned/          # Saved model directory
-├── my-finbert-finetuned.zip       # Zipped model
-├── all-data.csv                   # Sentiment dataset
-├── README.md                      # Project overview (this file)
-```
-
----
-
 ## 🚀 Future Work
 
 - Integrate real-time stock execution via broker API
