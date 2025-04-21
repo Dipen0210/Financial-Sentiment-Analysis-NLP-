@@ -12,36 +12,6 @@ This repository contains two interconnected projects:
 
 This project fine-tunes the pre-trained [FinBERT model](https://huggingface.co/yiyanghkust/finbert-tone) on a labeled dataset of financial news headlines to enhance domain-specific sentiment analysis performance.
 
-### 🔧 Steps
-
-1. **Environment Setup**
-   ```bash
-   pip install transformers datasets evaluate torch
-   ```
-
-2. **Data Preparation**
-   - Load the dataset (`all-data.csv`)
-   - Clean and map labels to IDs
-   - Split into train/test sets
-
-3. **Tokenization**
-   - Applied `AutoTokenizer` from FinBERT
-   - Used HuggingFace `Dataset.map` for batch tokenization
-
-4. **Model Setup & Training**
-   - Used `AutoModelForSequenceClassification`
-   - Configured `TrainingArguments`
-   - Trained via HuggingFace `Trainer`
-
-5. **Evaluation**
-   - Calculated accuracy, precision, recall, F1-score
-   - Achieved ~85% overall accuracy on test set
-   - Visualized confusion matrix
-
-6. **Saving and Export**
-   - Saved fine-tuned model to `./my-finbert-finetuned`
-   - Zipped model for download
-
 ### ✅ Results
 
 - Precision (macro): **0.81**
@@ -55,45 +25,6 @@ This project fine-tunes the pre-trained [FinBERT model](https://huggingface.co/y
 ### 🔍 Objective
 
 Combine **news sentiment**, **MACD**, and **RSI** to generate actionable **BUY/SELL/HOLD** signals, and backtest the performance of these decisions on historical stock prices.
-
-### 🔗 Components
-
-1. **Load Fine-Tuned FinBERT Model**
-   ```python
-   finbert = pipeline("sentiment-analysis", model="./my-finbert-finetuned")
-   ```
-
-2. **Fetch News with NewsAPI**
-   ```python
-   newsapi = NewsApiClient(api_key="your_api_key")
-   ```
-
-3. **Sentiment Scoring**
-   - Extract sentiment label and confidence score for each headline.
-
-4. **Ticker Identification**
-   - Map companies in headlines to ticker symbols using a custom dictionary.
-
-5. **Technical Indicators**
-   - **RSI**: Uses a 14-day rolling window
-   - **MACD**: Difference of EMA(12) and EMA(26), with signal line
-
-6. **Signal Aggregation Logic**
-   ```python
-   final_score = mean([sentiment_score, rsi_signal, macd_signal])
-   ```
-
-7. **Decision Mapping**
-   - >0.33 = BUY  
-   - <-0.33 = SELL  
-   - else = HOLD
-
-8. **Visualization**
-   - Plots stock prices with signal overlays
-
-9. **Backtesting Engine**
-   - Simulates portfolio using signals
-   - Calculates virtual PnL
 
 ### ✅ Results
 
